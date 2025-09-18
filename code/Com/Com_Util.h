@@ -1,6 +1,8 @@
 #ifndef __COM_UTIL_H__
 #define __COM_UTIL_H__
-
+#include "STC89C5xRC.H"
+#include "Com_GPIO.h"
+#include <INTRINS.H>
 typedef unsigned char u8;
 typedef unsigned int u16;
 typedef unsigned long u32;
