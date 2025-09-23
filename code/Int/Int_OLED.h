@@ -2,9 +2,7 @@
 #define __INT_OLED_H__
 #include "Com_Util.h"
 
-void Int_OLED_WriteData(u8 bytes[], u8 length);
 
-void Int_OLED_WriteCmd(u8 bytes[], u8 length);
 
 void Int_OLED_Init();
 

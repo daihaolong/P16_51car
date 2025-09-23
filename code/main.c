@@ -1,12 +1,10 @@
-#include "Dri_Timer2.h"
-#include "Int_Buzzer.h"
+#include "Int_OLED.h"
 
 void main()
 {   
-    Dri_Timer2_init();
-    Int_Buzzer_init();
-    Int_Buzzer_Buzz(3000);
-    
+    Int_OLED_Init();
+    Int_OLED_Clear();
+    Int_OLED_ShowStr(0,0,"HELLO WORLD!");
     while (1) {
 
     }
