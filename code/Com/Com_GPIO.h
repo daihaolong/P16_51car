@@ -32,5 +32,5 @@
 #define PATROL_RM P01
 #define PATROL_MM P02
 #define PATROL_LM P03
-#define PATROL_MM P04
+#define PATROL_LL P04
 #endif /* __COM_GPIO_H__ */
