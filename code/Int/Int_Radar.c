@@ -53,10 +53,10 @@ u16 Int_Radar_Getdistance(){
         s_radar_allow_count = 0;
         
     }
-    //2 正在测距中,不会有任何反应
+    
 
 
-    //3 测距完成, echo出现下降沿的时候，测距就完成了，此时有一个标记就是，出发了外部中断0 
+    //2 测距完成, echo出现下降沿的时候，测距就完成了，此时有一个标记就是，出发了外部中断0 
     if (s_echo_is_complete){
         tim0= (TH0 << 8) + TL0;
         
@@ -76,8 +76,8 @@ u16 Int_Radar_Getdistance(){
         
         
     }
-
-
+    //3 正在测距中,不会有任何反应
+    return 0 ;
 }
 
 
