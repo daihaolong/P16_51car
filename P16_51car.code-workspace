@@ -23,7 +23,8 @@
             "STC89C5xRC.H": "cpp",
             "INTRINS.H": "cpp",
             "STDIO.H": "cpp",
-            "STRING.H": "cpp"
+            "STRING.H": "cpp",
+            "MATH.H": "cpp"
         },
         "files.autoGuessEncoding": true,
         "EIDE.ARM.Option.AutoGenerateRTE_Components": false,
