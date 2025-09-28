@@ -1,31 +1,43 @@
-#include "Int_Motor.h"
+#include "Int_UART.h"
 
 
 void main()
 {   
+    char c;
+    Int_UART_init();
     
-    Dri_Timer2_init();
-    Int_Motor_Init();
-    Int_Motor_SetLeftSpeed(10);
-    Int_Motor_SetRightSpeed(10);
-    Com_Util_Delay1ms(3000);
 
-    Int_Motor_SetLeftSpeed(-10);
-    Int_Motor_SetRightSpeed(-10);
-    Com_Util_Delay1ms(3000);
-
-    //右转
-    Int_Motor_SetLeftSpeed(10);
-    Int_Motor_SetRightSpeed(-10);
-    Com_Util_Delay1ms(3000);
-
-    //左转
-    Int_Motor_SetLeftSpeed(-10);
-    Int_Motor_SetRightSpeed(10);
 
     while (1)
     {
-        /* code */
+        if (Int_UART_ReciveByte(&c))
+        {
+            /* code */
+            switch (c)
+            {
+            case 'a':
+                /* code */
+                Int_UART_SendBytes("left");
+                break;
+            case 's':
+                /* code */
+                Int_UART_SendBytes("down");
+                break;
+            case 'd':
+                /* code */
+                Int_UART_SendBytes("right");
+                break;
+            case 'w':
+                /* code */
+                Int_UART_SendBytes("up");
+                break;
+            default:
+                break;
+            }
+            
+            
+        }
+        
     }
     
     
