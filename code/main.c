@@ -1,44 +1,25 @@
 #include "Int_UART.h"
-
+#include "Dri_Timer2.h"
 
 void main()
 {   
-    char c;
+    char bytes[16];
+    Dri_Timer2_init();
     Int_UART_init();
     
-
-
     while (1)
     {
-        if (Int_UART_ReciveByte(&c))
+        if (Int_UART_ReciveBytes(bytes))
         {
             /* code */
-            switch (c)
-            {
-            case 'a':
-                /* code */
-                Int_UART_SendBytes("left");
-                break;
-            case 's':
-                /* code */
-                Int_UART_SendBytes("down");
-                break;
-            case 'd':
-                /* code */
-                Int_UART_SendBytes("right");
-                break;
-            case 'w':
-                /* code */
-                Int_UART_SendBytes("up");
-                break;
-            default:
-                break;
-            }
-            
+            Int_UART_SendBytes(bytes);
+
             
         }
         
+
     }
+       
     
     
 }

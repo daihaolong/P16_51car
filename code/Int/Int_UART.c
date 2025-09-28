@@ -1,7 +1,22 @@
 #include "Int_UART.h"
-
+#include "Dri_Timer2.h"
 static bit s_is_sending = 0;
+static bit s_is_recive_complete = 0;
 static char s_recive_buffer = 0;
+static char s_recvie_buffers[16] = 0; 
+static u8 s_idle_count=0;
+static u8 s_recvie_buffers_index = 0;
+
+void Int_UART_Timer2Call(){
+    s_idle_count++;
+    if (s_recvie_buffers_index >0 && s_idle_count > 5)
+    {
+        /* code */
+        s_is_recive_complete = 1;
+    }
+    
+}
+
 
 void Int_UART_init(){
 
@@ -18,7 +33,7 @@ void Int_UART_init(){
     TR1 = 1;
     EA = 1;
     ES = 1;
-
+    Dri_Timer2_Register(Int_UART_Timer2Call);
 
 }
 
@@ -44,20 +59,25 @@ void Int_UART_SendBytes(char *byte){
 }
 
 
-bit Int_UART_ReciveByte(char *c){  
-    
-    if (s_recive_buffer)
+bit Int_UART_ReciveBytes(char *byte){
+    u8 i ;
+    if (s_is_recive_complete)
     {
-       *c = s_recive_buffer;
-       s_recive_buffer = 0;
-       return 1;
+        /* code */
+        for ( i = 0; i < s_recvie_buffers_index ; i++)
+    {
+        /* code */
+        byte[i] = s_recvie_buffers[i];
     }
-    else{return 0;}
-    
-    
-
-}
-void Int_UART_ReciveBytes(char *byte){
+    byte[s_recvie_buffers_index] = '\0';
+    s_is_recive_complete = 0;
+    s_recvie_buffers_index = 0;
+    return 1;
+    }
+    else
+    {
+        return 0 ;
+    }
     
 
 }
@@ -79,9 +99,9 @@ void Int_UART_interruptHandler() interrupt 4{
     if (RI)
     {
         /* code */
-        s_recive_buffer = SBUF;
+        s_recvie_buffers[s_recvie_buffers_index++] = SBUF;
+        s_idle_count = 0;
         RI = 0;
-        
         
     }
     

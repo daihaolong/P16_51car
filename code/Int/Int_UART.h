@@ -8,8 +8,7 @@ void Int_UART_SendByte(char byte);
 void Int_UART_SendBytes(char *byte);
 
 
-bit Int_UART_ReciveByte(char *c);
-void Int_UART_ReciveBytes(char *byte);
+bit Int_UART_ReciveBytes(char *byte);
 
 
 #endif /* __INT_UART_H__ */
