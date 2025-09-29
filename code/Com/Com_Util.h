@@ -14,4 +14,5 @@ void Com_Util_Delay60us(void);
 void Com_Util_Delay420us(void);
 void Com_Util_Delay10us(void);
 void Com_Util_Delay50us(void);
+void Com_Util_Delay20us(void);
 #endif // !1

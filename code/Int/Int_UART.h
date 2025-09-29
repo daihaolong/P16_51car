@@ -1,7 +1,7 @@
 #ifndef __INT_UART_H__
 #define __INT_UART_H__
 #include "Com_Util.h"
-
+#include "Dri_Timer2.h"
 void Int_UART_init();
 
 void Int_UART_SendByte(char byte);

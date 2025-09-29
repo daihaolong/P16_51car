@@ -59,3 +59,11 @@ void Com_Util_Delay50us(void)	//@11.0592MHz
 	while (--i);
 }
 
+void Com_Util_Delay20us(void)	//@11.0592MHz
+{
+	unsigned char data i;
+
+	_nop_();
+	i = 6;
+	while (--i);
+}

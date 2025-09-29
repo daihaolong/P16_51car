@@ -1,8 +1,9 @@
 #include "Int_Radar.h"
-#include "Com_Util.h"
+
 
 static u8 s_radar_allow_count=0;
 static bit s_echo_is_complete=0;
+static  u16 s_distance=0;
 void Int_Radar_CallBack(){
      
     if (s_radar_allow_count<100)
@@ -37,12 +38,13 @@ void Int_Radar_init(){
 
     PX0 = 1; //设置中断优先级
     Dri_Timer2_Register(Int_Radar_CallBack);
+    s_echo_is_complete = 0;
 
 }
 
 u16 Int_Radar_Getdistance(){
     u16 tim0;
-    u16 s_distance=0;
+    
     //1 能够重新发送测距信息
     if (s_radar_allow_count == 100)
     {
@@ -72,18 +74,19 @@ u16 Int_Radar_Getdistance(){
         s_echo_is_complete = 0;
         TH0 = 0;
         TL0 = 0;
-        return s_distance;
+        
         
         
     }
+    return s_distance;
     //3 正在测距中,不会有任何反应
-    return 0 ;
+    
 }
 
 
-void Int_Radar_measure_complete() interrupt 0 {
+void Int_Radar_measure_complete() interrupt 0  {
 
     s_echo_is_complete = 1;
-
+    
 }
 

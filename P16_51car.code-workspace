@@ -24,7 +24,8 @@
             "INTRINS.H": "cpp",
             "STDIO.H": "cpp",
             "STRING.H": "cpp",
-            "MATH.H": "cpp"
+            "MATH.H": "cpp",
+            "STDDEF.H": "cpp"
         },
         "files.autoGuessEncoding": true,
         "EIDE.ARM.Option.AutoGenerateRTE_Components": false,

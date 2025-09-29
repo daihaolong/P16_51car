@@ -1,5 +1,5 @@
 #include "Int_UART.h"
-#include "Dri_Timer2.h"
+
 static bit s_is_sending = 0;
 static bit s_is_recive_complete = 0;
 static char s_recive_buffer = 0;
@@ -70,12 +70,13 @@ bit Int_UART_ReciveBytes(char *byte){
         byte[i] = s_recvie_buffers[i];
     }
     byte[s_recvie_buffers_index] = '\0';
-    s_is_recive_complete = 0;
+    s_is_recive_complete = 0;  
     s_recvie_buffers_index = 0;
     return 1;
     }
     else
     {
+        s_is_recive_complete = 0;
         return 0 ;
     }
     
