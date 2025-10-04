@@ -1,0 +1,80 @@
+version: "4.1"
+name: P16_51car
+type: C51
+deviceName: null
+packDir: null
+srcDirs:
+  - code
+virtualFolder:
+  name: <virtual_root>
+  files: []
+  folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: 0a5f2cc4ba65a74611a92c2813838f44
+targets:
+  Debug:
+    cppPreprocessAttrs:
+      defineList:
+        - DEBUG
+      incList: []
+      libList: []
+    excludeList: []
+    toolchain: Keil_C51
+    toolchainConfigMap:
+      Keil_C51:
+        options:
+          version: 2
+          afterBuildTasks: []
+          asm-compiler: {}
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            optimization-level: level-8
+            optimization-type: SPEED
+          global:
+            ram-mode: SMALL
+            rom-mode: LARGE
+          linker:
+            output-format: elf
+            remove-unused: true
+    uploadConfigMap:
+      Custom:
+        bin: ""
+        commandLine: python ./tools/stcflash.py -p COM3 "${programFile}"
+        eraseChipCommand: ""
+      stcgal:
+        bin: ""
+        eepromImgPath: "null"
+        extraOptions: ""
+        options: .eide/stc.flash.json
+    uploader: Custom
+  Release:
+    cppPreprocessAttrs:
+      defineList: []
+      incList: []
+      libList: []
+    excludeList: []
+    toolchain: Keil_C51
+    toolchainConfigMap:
+      Keil_C51:
+        options:
+          version: 2
+          afterBuildTasks: []
+          asm-compiler: {}
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            optimization-level: level-8
+            optimization-type: SPEED
+          global:
+            ram-mode: SMALL
+            rom-mode: LARGE
+          linker:
+            output-format: elf
+            remove-unused: true
+    uploadConfigMap:
+      Custom:
+        bin: ""
+        commandLine: python ./tools/stcflash.py -p ${port} "${hexFile}"
+        eraseChipCommand: ""
+    uploader: Custom

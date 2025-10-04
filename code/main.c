@@ -1,15 +1,15 @@
-#include "App_auto_avoid.h"
-#include "Com_Util.h"
-#include "Int_OLED.h"
-#include "Int_Radar.h"
-#include <STDIO.H>
+#include "App_Patrol.h"
+
+
 void main()
 {   
-    
-    App_auto_avoid_init();
+    Dri_Timer2_init();
+    Int_Motor_Init();
     while (1)
     {
-        App_auto_avoid();
+        
+        App_Patrol_Control();
+        
     }
        
     
